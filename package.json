@@ -1,0 +1,41 @@
+{
+  "name": "react-blog",
+  "version": "1.0.0",
+  "description": "react study",
+  "main": "index.js",
+  "scripts": {
+    "hot": "rm -rf dev && webpack-dev-server --config ./config/webpack/index.js --open --verbose",
+    "build": "rm -rf dev && webpack --config ./config/webpack/index.js --verbose",
+    "build:prod": "rm -rf prod && cross-env NODE_ENV=production webpack --config ./config/webpack/index.js",
+    "clean": "rm -rf prod && rm -rf dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NakashimaNozomi/react-blog.git"
+  },
+  "keywords": [],
+  "author": "Nozomi Nakamura",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NakashimaNozomi/react-blog/issues"
+  },
+  "homepage": "https://github.com/NakashimaNozomi/react-blog#readme",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "cross-env": "^7.0.2",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
