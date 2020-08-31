@@ -29,6 +29,7 @@
       }
     ],
     "no-console": "off",
+    "react/prop-types": [2, { "ignore": ["children"] }],
     "prettier/prettier": [
       "error",
       {

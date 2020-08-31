@@ -17,6 +17,10 @@ const App = () => {
         <Route exact path="/">
           <BlogPage />
         </Route>
+        <Route exact path="/blog/:key">
+          <BlogPage />
+        </Route>
+
         <Route exact path="/category">
           <CategoryPage />
         </Route>
