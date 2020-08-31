@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const PATH = 'http://localhost:4010/';
-// const PATH = 'https://react-blog.microcms.io/api/v1/';
+// const PATH = 'http://localhost:4010/';
+const PATH = 'https://react-blog.microcms.io/api/v1/';
 
 export const getApi = (url, params) => {
   return axios

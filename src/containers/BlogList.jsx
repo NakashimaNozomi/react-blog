@@ -1,27 +1,21 @@
-import React, { useEffect } from 'react';
-import { useBlog } from '../modules/blogs';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Heading } from '../components/Heading';
 
-const BlogList = () => {
-  const { fetchBlogList, isFetchBlogList, blogList } = useBlog();
-  useEffect(() => {
-    console.log('fetch list');
+const BlogList = (props) => {
+  const { loding, blogList } = props;
 
-    fetchBlogList();
-  }, []);
-
-  if (isFetchBlogList) {
+  if (loding) {
     return <p>loading...</p>;
   }
   return (
     <>
       <Heading>最新ブログ</Heading>
       <ul>
-        {blogList.map((blog, i) => (
+        {blogList?.map((blog, i) => (
           <li key={blog.id}>
             <h2>
-              <Link to={'/' + blog.id}>{blog.title}</Link>
+              <Link to={'/blog/' + blog.id}>{blog.title}</Link>
             </h2>
             <p>{`blog.content`}</p>
           </li>
