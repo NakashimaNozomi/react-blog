@@ -1,18 +1,11 @@
-import React, { useEffect } from 'react';
-import { useBlog } from '../modules/blogs';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Heading } from '../components/Heading';
 
 const BlogDetail = (props) => {
-  const { blogId } = props;
-  const { fetchBlog, isFetchBlog, blog } = useBlog();
+  const { loding, blog } = props;
 
-  useEffect(() => {
-    console.log('fetch blog');
-    fetchBlog(blogId);
-  }, []);
-
-  if (isFetchBlog) {
+  if (loding) {
     return <p>loading...</p>;
   }
 

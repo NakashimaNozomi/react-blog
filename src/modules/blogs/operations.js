@@ -1,23 +1,26 @@
 import { useDispatch } from 'react-redux';
-import axios from 'axios';
 import { fetchBlogListAction, successFetchBlogListAction } from './actions';
+import { getApi } from '../../utils/index';
 
-const PATH = 'http://localhost:4010/';
-// const PATH = 'https://react-blog.microcms.io/api/v1/';
+export const useBlogOperations = () => {
+  const dispatch = useDispatch();
 
-export const fetchBlogList = () => {
-  // dispatch(fetchBlogListAction());
-  // dispatch(successFetchBlogListAction([{ id: 1, title: 'hoge' }]));
-  axios.get(PATH + 'blogs', params).then((res) => {
-    console.log(res.data);
-    //   dispatch(actions.successFetchBlogListAction(res.data));
-  });
-};
+  const fetchBlogList = (req) => {
+    dispatch(fetchBlogListAction());
 
-export const fetchBlog = (key, callback) => {
-  // dispatch(actions.fetchBlogAction());
-  // axios.get(PATH + 'blogs/' + key).then((res) => {
-  //   dispatch(actions.successFetchBlogAction(res.data));
-  //   if (callback) callback(res);
-  // });
+    getApi('blogs', req).then((res) => {
+      if (!res?.data?.contents) alert('contents not found.');
+      dispatch(successFetchBlogListAction(res.data.contents));
+    });
+  };
+
+  const fetchBlog = (key, req) => {
+    dispatch(fetchBlogAction());
+    getApi('blogs/' + key).then((res) => {
+      console.log(res.data);
+      dispatch(successFetchBlogAction(res.data));
+    });
+  };
+
+  return { fetchBlogList, fetchBlog };
 };

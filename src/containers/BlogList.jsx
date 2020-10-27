@@ -17,7 +17,7 @@ const BlogList = (props) => {
             <h2>
               <Link to={'/blog/' + blog.id}>{blog.title}</Link>
             </h2>
-            <p>{`blog.content`}</p>
+            <div dangerouslySetInnerHTML={{ __html: blog?.content }} />
           </li>
         ))}
       </ul>
