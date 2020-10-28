@@ -11,13 +11,15 @@ export const getApi = (url, params) => {
 
 export const postApi = (url, params) => {
   return axios
-    .get(PATH + url, setHeader(params))
+    .post(PATH + url, setHeader(params))
     .catch((error) => alert(error.message));
 };
 
 const setHeader = (params) => {
   return {
-    ...params,
+    params: {
+      ...params,
+    },
     headers: {
       'X-API-KEY': '8a583462-4ec7-4f42-be92-2aa7e97d5350',
     },

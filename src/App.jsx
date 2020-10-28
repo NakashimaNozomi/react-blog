@@ -1,24 +1,26 @@
 import React from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 
 import Header from './containers/Header';
 import Footer from './containers/Footer';
+import history from './modules/history';
 
-import BlogPage from './pages/BlogPage';
+import BlogListPage from './pages/BlogListPage';
+import BlogDetailPage from './pages/BlogDetailPage';
 import CategoryPage from './pages/CategoryPage';
 import TagPage from './pages/TagPage';
 import ContactPage from './pages/ContactPage';
 
 const App = () => {
   return (
-    <HashRouter>
+    <Router history={history}>
       <Header />
       <Switch>
-        <Route exact path="/">
-          <BlogPage />
+        <Route exact path="/:page([0-9]+)?">
+          <BlogListPage />
         </Route>
         <Route exact path="/blog/:key">
-          <BlogPage />
+          <BlogDetailPage />
         </Route>
 
         <Route exact path="/category">
@@ -32,7 +34,7 @@ const App = () => {
         </Route>
       </Switch>
       <Footer />
-    </HashRouter>
+    </Router>
   );
 };
 
