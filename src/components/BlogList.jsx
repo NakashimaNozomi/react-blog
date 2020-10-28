@@ -2,6 +2,7 @@ import React from 'react';
 import { useBlogSelectors } from '../modules/blogs/selectors';
 
 import { Link } from 'react-router-dom';
+import { removeHtmlTags } from '../utils/index';
 
 export const BlogList = () => {
   const { blogList, isFetchBlogList } = useBlogSelectors();
@@ -17,7 +18,7 @@ export const BlogList = () => {
           <h2>
             <Link to={'/blog/' + blog.id}>{blog.title}</Link>
           </h2>
-          <div dangerouslySetInnerHTML={{ __html: blog?.content }} />
+          <p>{removeHtmlTags(blog?.content).substring(0, 100)}...</p>
         </li>
       ))}
     </ul>

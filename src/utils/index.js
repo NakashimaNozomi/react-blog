@@ -25,3 +25,7 @@ const setHeader = (params) => {
     },
   };
 };
+
+export const removeHtmlTags = (richText) => {
+  return richText.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
+};
