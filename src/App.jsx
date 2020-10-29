@@ -10,30 +10,33 @@ import BlogDetailPage from './pages/BlogDetailPage';
 import CategoryPage from './pages/CategoryPage';
 import TagPage from './pages/TagPage';
 import ContactPage from './pages/ContactPage';
+import { Container } from '@material-ui/core';
 
-const App = () => {
+const App = (props) => {
   return (
     <Router history={history}>
       <Header />
-      <Switch>
-        <Route exact path="/:page([0-9]+)?">
-          <BlogListPage />
-        </Route>
-        <Route exact path="/blog/:key">
-          <BlogDetailPage />
-        </Route>
+      <Container>
+        <Switch>
+          <Route exact path="/:page([0-9]+)?">
+            <BlogListPage />
+          </Route>
+          <Route exact path="/blog/:key">
+            <BlogDetailPage />
+          </Route>
 
-        <Route exact path="/category">
-          <CategoryPage />
-        </Route>
-        <Route exact path="/tag">
-          <TagPage />
-        </Route>
-        <Route exact path="/contact">
-          <ContactPage />
-        </Route>
-      </Switch>
-      <Footer />
+          <Route exact path="/category">
+            <CategoryPage />
+          </Route>
+          <Route exact path="/tag">
+            <TagPage />
+          </Route>
+          <Route exact path="/contact">
+            <ContactPage />
+          </Route>
+        </Switch>
+      </Container>
+      <Footer {...props} />
     </Router>
   );
 };
